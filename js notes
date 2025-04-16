@@ -1,0 +1,111 @@
+// 1. Get element
+const textField = document.getElementById("input-field");
+const addButtonEl = document.getElementById("add-button");
+
+// 2. add an event listener 
+addButtonEl.addEventListener("click", function() {
+    //console log the value of textField
+    let inputValue = inputFieldEl.value
+    console.log(inputValue)
+})
+
+//3. Add Firebase database link to js file at the top
+    //also import initalizeApp and getDatabase at the top 
+-	https://realtime-database-2ec3c-default-rtdb.firebaseio.com/
+    //don't forget to set your html js link to type="module"
+
+//4. Set up app variable and give it arguments to give the app settings we set up 
+//5. Set up a database variable that use the getDatabse and passes the app
+//6. Then set up the reference 
+const app = initializeApp(appSettings)
+const database = getDatabase(app)
+const shoppingListInDB = ref(database, "shoppingList")
+
+//7. Inside of addButtonEl : Use the Firebase function 'push' to push inputValue to the database
+    push(shoppingListInDB, inputValue)
+
+//8. Write the js that will add our items to the dom - 
+    //Challenge: Append a new <li> with text content inputValue to the 'shopping-list' <ul>
+    //connect js+html
+    const shoppingListEl = document.getElementById("shopping-list")
+    //then add to button
+    shoppingListEl.innerHTML += `<li>${inputValue}</li>`
+    //Clear the input field when the button is pressed 
+    inputFieldEl.value = ""
+
+
+/******************* Tip: Pause and try to rewrite your code, also see if you can clean it up ***************************/
+
+//9. Challenge: Refactor the line below into its own function.
+    inputFieldEl.value = ""
+
+        //So create a function that takes in the input field element as an argument and sets its value to an empty string.
+    function clearInputField() {
+        inputFieldEl.value = "";
+      }
+
+    //Challenge: Refactor the line below into its own function.
+    shoppingListEl.innerHTML += `<li>${inputValue}</li>`
+      //create a function that takes in the shopping list element and input valu as arguments then appends a new li element 
+      function addToListEl(itemValue) {
+        shoppingListEl.innerHTML += `<li>${itemValue}</li>`
+      }
+    
+/* 10. Challenge:
+    Call the onValue function with
+    shoppingListInDB as the first argument (the reference) and
+    function(snapshot) {} as the second argument
+    */ 
+      onValue(shoppingListInDB, function (snapshot)){
+        // Challenge: Console log snapshot.val() to show all the items inside of shoppingList in the database
+        // p.s dont for to import onValue
+        console.log(snapshot.val())
+        // Challenge: Use Object.values() to convert snapshot.val() from an Object to an Array. Create a variable for this.
+        let itemsArray = Object.values(snapshot.val())
+        // Challenge: Write a for loop to iterate on itemsArray and console log each item
+        for (let i = 0; i < itemsArray.length; i++){
+            /* Challenge: Use the appendItemToShoppingListEl(itemValue) 
+            function inside of the for loop to append item to the shopping list element for each iteration.*/
+            appendItemToShoppingListEl(itemsArray[i])
+            //Get item ID from database
+            let currentItem = itemsArray[i]
+            // Challenge: Make two let variables:
+            // currentItemID and currentItemValue and use currentItem to set both of
+            // them equal to the correct values.
+            let currentItemID = currentItem[0]
+            let currentItemValue = currentItem[1]
+        }
+      }
+
+//11. Replace innerHTML with createElement
+    // function appendItemToShoppingListEl(itemValue) {
+    // shoppingListEl.innerHTML += `<li>${itemValue}</li>`
+    let newEl = document.createElement("li")
+    
+    // Challenge: Make it so the item name shows instead of 'Something'
+    let itemID = item[0]
+    let itemValue = item[1]
+
+    newEl.textContent = itemValue
+    
+    shoppingListEl.append(newEl)
+
+//12. Remove items
+    // Challenge: Attach an event listener to newEl and make it so you console log the id of the item when it's pressed.
+    newEl.addEventListener("click", function()){
+        // Challenge: Make a let variable called 'exactLocationOfItemInDB' and set it equal to ref(database, something) where you substitute something with the code that will give you the exact location of the item in question.
+        let exactLocationOfItemInDB = ref(database, 'shoppingList/${itemID}')
+        // Challenge: Use the remove function to remove the item from the database
+        // first import the remove function then you call it 
+        remove(exactLocationOfItemInDB)
+    }
+
+//13. Fix the bug that causes eveything but the last item remaining on the list to be deleted
+    //Error recieved: !TypeError: Cannot convert undefined or null to object
+        //the issue lies with our onValue that is where our code lies when we press the button to add to the list
+        //the last item will delete the shopping list reference and it causes the onValue function to fail because no snapshot exists 
+        //use the method snapchat.exist 
+
+          /* Challenge: Change the onValue code so that it uses snapshot.exists() 
+          to show items when there are items in the database and if there are not displays the text 'No items here... yet'.*/
+          if (snapshot.exists()) //put the remaining code inside of this and add else clause

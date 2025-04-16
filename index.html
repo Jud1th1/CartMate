@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sigmar&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" href="style.css">
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+    <title>CartMate</title>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="container" id="main-content">
+
+    <div class="container">
+        <!---Toggle Code-->
+        <input type="checkbox" id="toggle_checkbox">
+        <label for="toggle_checkbox" class="togglebtn" aria-label="Toggle theme between light and dark" onclick="myToggle()">
+        <div id="kiwi"><img src="assets/kiwi.png" alt="kiwi icon"></div>
+        <div id="grape"><img src="assets/grape.png" alt="grape icon"></div>
+        </label>
+
+
+        <!--Scrimba Code Starts below-->
+        <h1>CartMate</h1>
+        <img src="assets/GroceryCart.png" class="image" alt="grocery cart logo">
+        <img src="assets/GroceryCart.png" class="image2" alt="grocery cart logo">
+        <h2><div class="poptext">Let's Shop Together</div> so you don't forget anything!</h2>
+        <hr>
+        <h3>Type the item you need below and as you shop, tap on the item to remove</h3>
+        
+        <label for="input-field" class="sr-only">Enter item to add to cart</label>
+        <input type="text" id="input-field" placeholder="Ex. Cookies">
+        <button id="add-button">+</button>
+        <ul id="shopping-list">
+        </ul>
+
+        <img src="assets/Logo.png" class="logo-img" alt="grocery bag logo">
+    </div>
+
+    </div>
+
+    <!--JavaScript-->
+    <script src="index.js" type="module"></script>
+    <script>
+        function myToggle() {
+           var element = document.body;
+           element.classList.toggle("purple-mode");
+        }
+    </script>
+</body>
+</html>
