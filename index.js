@@ -11,17 +11,20 @@ const shoppingListInDB = ref(database, "shoppingList") //The reference
 
 // Get element
 const inputFieldEl = document.getElementById("input-field")
-const addButtonEl = document.getElementById("add-button")
-const shoppingListEl = document.getElementById("shopping-list") //Add shopping list from html to js
+const shoppingListEl = document.getElementById("shopping-list") 
 
-// add an event listener 
-addButtonEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value
-    
-    push(shoppingListInDB, inputValue)
 
-    clearInputFieldEl()
-})
+//Submit form input and prevent empty string in form submission
+document.getElementById("item-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const inputValue = inputFieldEl.value.trim();
+  
+    if (inputValue !== "") {
+      push(shoppingListInDB, inputValue);
+      clearInputFieldEl();
+    }
+  });
+
 
 // call onValue function so we can use realtime snapshot
 onValue(shoppingListInDB, function(snapshot) {
@@ -52,22 +55,27 @@ function clearInputFieldEl() {
     inputFieldEl.value = ""
 }
 
-function appendItemToShoppingListEl(item) {
-    let itemID = item[0]
-    let itemValue = item[1]
-    
-    let newEl = document.createElement("li")
-    
-    newEl.textContent = itemValue
+function appendItemToShoppingListEl([itemID, itemValue]) {
+    const newEl = document.createElement("li");
+    newEl.textContent = itemValue;
+    newEl.tabIndex = 0; // makes it focusable
 
-    newEl.addEventListener("click", function() { 
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`) //to locate the item in question
-        remove(exactLocationOfItemInDB) //remove function to remove items from the database
-    })
+    newEl.addEventListener("click", () => {
+        const itemRef = ref(database, `shoppingList/${itemID}`);
+        remove(itemRef);
+    });
 
-    shoppingListEl.append(newEl)
+    newEl.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            const itemRef = ref(database, `shoppingList/${itemID}`);
+            remove(itemRef);
+        }
+    });
+
+    shoppingListEl.append(newEl);
 }
 
+//Toggle JS
 const kiwi = document.querySelector("#kiwi img");
 const grape = document.querySelector("#grape img");
 
@@ -78,3 +86,6 @@ function myToggle() {
   fruit.classList.add("bounce");
   setTimeout(() => fruit.classList.remove("bounce"), 300);
 }
+
+const toggleLabel = document.querySelector(".togglebtn");
+toggleLabel.addEventListener("click", myToggle);

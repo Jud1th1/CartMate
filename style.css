@@ -26,7 +26,7 @@
     PURPLEGRAPE MODE OVERRIDES
   ===============
   */
-  .purple-mode {
+  body.purple-mode {
     --bg-main: #2D1850;
     --accent-primary: #ACA1C4;
     --accent-secondary: #55447B;
@@ -54,7 +54,7 @@
     user-select: none;
   }
   
-  .container {
+  #main-content {
     display: flex;
     flex-direction: column;
     max-width: 320px;
@@ -89,7 +89,6 @@
     font-size: 1em;
   }
   
-
 
 /*
 =====================
@@ -188,6 +187,13 @@
     background-color: var(--accent-secondary);
     border: none;
   }
+
+  #item-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }  
   
   input {
     color: var(--text-color);
@@ -212,9 +218,7 @@
     border: none;
     border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
     bottom: 3.5rem;
-    left: 15.5rem;
   }
   
   button:hover {

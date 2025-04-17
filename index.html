@@ -15,47 +15,40 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
         <link rel="manifest" href="/assets/site.webmanifest">
+    <!--JavaScript-->
     <title>CartMate</title>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <div class="container" id="main-content">
 
-    <div class="container">
+    <main id="main-content">
         <!---Toggle Code-->
         <input type="checkbox" id="toggle_checkbox">
-        <label for="toggle_checkbox" class="togglebtn" aria-label="Toggle theme between light and dark" onclick="myToggle()">
+        <label for="toggle_checkbox" class="togglebtn" aria-label="Toggle dark mode">
         <div id="kiwi"><img src="assets/kiwi.png" alt="kiwi icon"></div>
         <div id="grape"><img src="assets/grape.png" alt="grape icon"></div>
         </label>
 
 
         <!--Scrimba Code Starts below-->
+        
         <h1>CartMate</h1>
-        <img src="assets/GroceryCart.png" class="image" alt="grocery cart logo">
-        <img src="assets/GroceryCart.png" class="image2" alt="grocery cart logo">
+        <img src="assets/GroceryCart.png" class="image" alt="CartMate mascot grocery cart with kawaii face">
         <h2><div class="poptext">Let's Shop Together</div> so you don't forget anything!</h2>
         <hr>
         <h3>Type the item you need below and as you shop, tap on the item to remove</h3>
-        
-        <label for="input-field" class="sr-only">Enter item to add to cart</label>
-        <input type="text" id="input-field" placeholder="Ex. Cookies">
-        <button id="add-button">+</button>
+        <form id="item-form">
+            <label for="input-field" class="sr-only">Enter item to add to cart</label>
+            <input type="text" id="input-field" placeholder="Ex. Cookies" autocomplete="off">
+            <button type="submit" id="add-button">+</button>
+        </form>
+
         <ul id="shopping-list">
         </ul>
 
-        <img src="assets/Logo.png" class="logo-img" alt="grocery bag logo">
-    </div>
-
-    </div>
-
-    <!--JavaScript-->
-    <script src="index.js" type="module"></script>
-    <script>
-        function myToggle() {
-           var element = document.body;
-           element.classList.toggle("purple-mode");
-        }
-    </script>
+        <img src="assets/Logo.png" class="logo-img" alt="CartMate grocery bag icon with eyes">
+    </main>
+    
+<script src="index.js" type="module"></script>
 </body>
 </html>
