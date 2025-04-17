@@ -78,14 +78,31 @@ function appendItemToShoppingListEl([itemID, itemValue]) {
 //Toggle JS
 const kiwi = document.querySelector("#kiwi img");
 const grape = document.querySelector("#grape img");
+const toggleCheckbox = document.getElementById("toggle_checkbox");
 
 function myToggle() {
   document.body.classList.toggle("purple-mode");
 
   const fruit = document.body.classList.contains("purple-mode") ? grape : kiwi;
+  
+    // Store preference
+    localStorage.setItem("theme", isPurple ? "purple" : "kiwi");
+
   fruit.classList.add("bounce");
   setTimeout(() => fruit.classList.remove("bounce"), 300);
 }
 
 const toggleLabel = document.querySelector(".togglebtn");
 toggleLabel.addEventListener("click", myToggle);
+
+
+// Check saved theme on load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+  
+    if (savedTheme === "purple") {
+      document.body.classList.add("purple-mode");
+      toggleCheckbox.checked = true;
+    }
+  });
+  
