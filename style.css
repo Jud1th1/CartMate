@@ -1,3 +1,4 @@
+
 /*
 ===============
   ROOT VARIABLES
@@ -58,7 +59,8 @@
     display: flex;
     flex-direction: column;
     max-width: 320px;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding-top: 30px; 
   }
   
   h1 {
@@ -75,7 +77,9 @@
     text-shadow: 2px 2px var(--header-shadow);
     text-align: center;
     color: var(--text-color2);
-  }
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+  }  
   
   .poptext {
     color: var(--accent-primary);
@@ -87,6 +91,7 @@
     margin-bottom: 1em;
     color: var(--text-muted);
     font-size: 1em;
+    line-height: 1.4;
   }
   
 
@@ -173,12 +178,22 @@
     padding: 1.5em 3.5em;
     background-color: var(--accent-primary);
     border-radius: 1.5em;
-    box-shadow: 1px 1px 2px 1px grey;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    animation: floatIn 0.7s ease-out both;
   }
   
-  .image2 {
-    display: none;
+  @keyframes floatIn {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
+
   
   hr {
     margin: auto;
@@ -186,7 +201,9 @@
     width: 100%;
     background-color: var(--accent-secondary);
     border: none;
+    opacity: 0.5;
   }
+  
 
   #item-form {
     display: flex;
@@ -194,20 +211,31 @@
     align-items: center;
     justify-content: center;
   }  
-  
-  input {
-    color: var(--text-color);
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
     background-color: var(--input-bg);
-    border: 0;
-    padding: 15px;
     border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
-    font-family: var(--font-body);
-    margin: 10px 0;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 5px 5px 0px inset;
+    overflow: hidden;
+    margin: 10px 0;
   }
-  
+
+  .input-wrapper input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-family: var(--font-body);
+  }
+
+  .input-wrapper input:focus {
+    outline: none;
+  }  
+
   button {
     width: 40px;
     height: 40px;
@@ -218,7 +246,6 @@
     border: none;
     border-radius: 8px;
     transition: all 0.3s ease;
-    bottom: 3.5rem;
   }
   
   button:hover {
@@ -274,11 +301,38 @@
     }
   }
   
-  .logo-img{
+  .logo-img {
     width: 50px;
     position: relative;
     left: 10rem;
+    animation: floatIn 0.8s ease-out both;
+    transition: transform 0.3s ease;
   }
+  
+  .logo-img:hover {
+    animation: bounce 0.4s ease-in-out;
+  }
+  
+  @keyframes floatIn {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  
   /*
   ===============
     ACCESSIBILITY HELPERS

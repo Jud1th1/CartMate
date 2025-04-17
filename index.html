@@ -38,17 +38,19 @@
         <hr>
         <h3>Type the item you need below and as you shop, tap on the item to remove</h3>
         <form id="item-form">
-            <label for="input-field" class="sr-only">Enter item to add to cart</label>
-            <input type="text" id="input-field" placeholder="Ex. Cookies" autocomplete="off">
-            <button type="submit" id="add-button">+</button>
-        </form>
+            <div class="input-wrapper">
+              <label for="input-field" class="sr-only">Enter item to add to cart</label>
+              <input type="text" id="input-field" placeholder="Ex. Cookies">
+              <button type="submit" id="add-button">+</button>
+            </div>
+          </form>          
 
         <ul id="shopping-list">
         </ul>
 
         <img src="assets/Logo.png" class="logo-img" alt="CartMate grocery bag icon with eyes">
     </main>
-    
+
 <script src="index.js" type="module"></script>
 </body>
 </html>
