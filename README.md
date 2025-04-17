@@ -1,5 +1,6 @@
-# Scrimba- Firebase Mobile App
+# 🛒 CartMate
 
+CartMate is a playful, accessible grocery list app designed for mobile — letting users easily add and remove items from their list in real-time using Firebase. With a whimsical theme toggle between Kiwi (light mode) and Grape (dark mode), CartMate proves productivity can be adorable.
 
 ## Table of contents
 
@@ -13,69 +14,102 @@
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 
-
 ## Overview
-Created a grocery list mobile app with JavaScript
+
+CartMate is a real-time shopping list app built using HTML, CSS, JavaScript, and Firebase. It allows users to:
 
 ### The challenge
 
-Users should be able to:
+- Add grocery items with a simple input field and "+" button
 
-- Add grocery items to the list using the ‘Add to Cart’ button and it should  appear at the bottom of the screen
-- Remove items by tapping on item button
-- Use the toggle button to navigate between peaches&cream and kiwi mode (Peach or green screen).
+- Remove items by tapping on them
 
+- Experience responsive theming with a custom fruit toggle switch between light and dark mode
+
+- Enjoy accessibility-first design with semantic elements, ARIA labels, skip links, keyboard nav, and passed audits
+
+- Store theme preference in localStorage so their favorite mode persists between sessions
+
+- Use the app easily on mobile (where it shines best!)
 
 ### Screenshot
 
 ![](./CartMate.png)
 
-
 ### Links
 
-- Solution URL: https://github.com/Jud1th1/Firebase-App
-- Live Site URL: https://cartmate-groceryapp.netlify.app/
+- Solution URL: https://github.com/Jud1th1/CartMate [https://github.com/Jud1th1/CartMate]
+- Live Site URL: https://cartmateshopping.netlify.app/ [https://cartmateshopping.netlify.app/]
 
 ## My process
--	Following along with Scrimba, we started off with our HTML layout and CSS styling
--	I took advantage of going along with adding my own CSS styling as the video was going along by adding some header text that could cue the user to what the app was called, and how to use it. I also changed the colors to orange and pink (peaches and cream) to match the theme of groceries and food. 
--	We did some practice using Firebase to learn how to export a Firebase database to our project, fetch it, and set it to test mode for this project. (Word doc notes included)
--	We set up our JavaScript by getting the elements needed for this app to be functional (the text field and button), added event listeners for the click function, imported Firebase, set up variables with arguments to give the app settings, use the database and set up a reference for the shopping list. Afterward, we wrote the JS code that would add items to the dom, and rewrote some code for clarity such as replacing our innerHTML with a createElement for easier use. Then finally we added a variable and eventListener to remove items. We encountered some bugs here such as the last item on the list not being deleted due to our onValue reference which we fixed by adding an if-else statement for if our snapshot (any value) exists. 
--	Along the way of this tutorial, we were challenged to execute the code before continuing the video, which helped with retention of how to call items, set up functions, and troubleshoot. 
--	Once the project was finalized, I went back in to add some final touches to my CSS stylings such as creating a pure CSS toggle feature to change between a peaches and cream (orange theme mode) and kiwi (green and brown) theme mode. I learned JS for switching between light and dark mode and used that here by adding the function to the bottom of my page and then adding the green style elements to my CSS. 
--   Another proud moment for me in this project was the grocery cart and bag images that I made myself in Adobe Illustrator. I used favicon.io to convertor my png image into the favicon icon needed 
--	This project took about 12 hours, since I rewatched it to make sure I understood the JS but it was well worth it 😊 
 
+Started with Scrimba’s Firebase tutorial to learn basic CRUD operations in JavaScript using Firebase Realtime Database.
+
+Refactored code to use createElement over innerHTML for better structure and readability.
+
+Replaced onclick-style event handling with addEventListener and swapped the Add button to a proper <form> for accessibility and Enter key support.
+
+Created a custom light/dark mode toggle using fruit-themed SVG icons I illustrated myself 🍑🥝🍇.
+
+Improved accessibility using:
+
+- aria-labels
+
+- skip to main content link
+
+- color contrast checks
+
+- proper label/input associations
+
+Made the theme persist across refreshes using localStorage.
+
+Added animation flourishes (like bouncy fruit and floating logos) for extra charm ✨.
+
+Fully responsive and optimized for mobile screens, but still looks great on desktop!
 
 ### Built with
 
-- HTML
-- Flexbox
-- CSS
-- Pure CSS toggle
-- Javascript
+- HTML5 (Semantic)
+- CSS3 (Custom properties, Flexbox, Animations)
+- JavaScript (ES6+)
+- Firebase Realtime Database
 - Firebase
 - Mobile workflow
-
+- Accessibility-first approach
 
 ### What I learned
 
--	How to build a grocery list with JavaScript
--	How to use/import a database to my project
--	How to add my project to my phone to use as a mobile app (I’m very proud of this accomplishment) 
+- How to structure and use a Firebase database
 
+- JavaScript DOM manipulation and best practices
+
+- Styling with CSS variables and creating reusable themes
+
+- Persisting state with localStorage
+
+- Accessibility wins (like form labels, skip links, and semantic elements)
+
+- Debugging async bugs and scope issues
+
+- Staying resilient through bugs, layout shifts, and late-night "why isn't this working" meltdowns 😅
 
 ### Continued development
 
-I plan on learning more about how to use the database for future projects such as a social media app for tech professionals, and some e-commerce apps. 
+I’d love to:
 
-I also will continue learning Javascript (Primarily with FreeCodeCamp practices)
+- Add user authentication (to save individual lists)
 
+- Include categories or emojis for grocery items
+
+- Add drag-and-drop reordering
+
+- Refactor further into a React-based app or turn this into a PWA!
 
 ### Useful resources
 
-- https://scrimba.com/learn/firebase   //Scrimba Tutorial
-- https://console.firebase.google.com/u/0/    //Firebase  
-- https://favicon.io    //Favicon convertor
-- https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp   //Dark/light mode
-- https://codepen.io/Jud1th1/pen/bGmgYRE  //my toggle codepen
+- [https://scrimba.com/learn/firebase] //Scrimba Tutorial
+- [https://console.firebase.google.com/u/0/] //Firebase
+- [https://favicon.io] //Favicon convertor
+- [https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp] //Dark/light mode
+- [https://codepen.io/Jud1th1/pen/bGmgYRE] //my toggle codepen
+- [https://accessibe.com/accessscan] //AccessiBe Audit Tool
